@@ -12,12 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carreras', function (Blueprint $table){
-            $table->id('idCarrera');
+            $table->id('id');
             $table->string('carrera');
             $table->string('descripcion', 255)->nullable();
             $table->timestamps();
-            $table->foreignId('sedeId');
+            $table->foreignId('sede_id');
+
+            $table->foreign('sede_id')->references('id')->on('sedes');
+
+
         });
+
+
+
     }
 
     /**
