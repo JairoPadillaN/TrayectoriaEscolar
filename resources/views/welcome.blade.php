@@ -25,7 +25,7 @@
     <body>
         <div>
             <!-- Image and text -->
-            <nav class="navbar navbar-dark bg-dark" style="padding: 2ch">
+            <nav class="navbar navbar-dark bg-dark" style="padding: 1ch">
                 <a class="navbar-brand" href="https://utvt.edomex.gob.mx">
                 <img src="{{asset('assets/img/cuervo_logo.png')}}" width="35" height="35" class="d-inline-block align-top" alt="">
                 Universidad Tecnológica del Valle de Toluca
