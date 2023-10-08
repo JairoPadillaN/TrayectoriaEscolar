@@ -8,24 +8,27 @@
   <thead>
     <tr>
       
-    <th>ID</th>
+    <th>Matricula </th>
       <th>Nombre</th>
-      <th>Telefono</th>
-      <th>Correo Istitucional </th>
-      <th>Matricula </th>
-      <th>Rol</th>
+      <th>Apellidos</th>
+      <th>Correo</th>
+      <th>Rol </th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     
+  @foreach ($data as $user)
+
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{$user->matricula}}</td>
+      <td>{{$user->nombre}}</td>
+      <td>{{$user->ap_paterno}}</td>
+      <td>{{$user->correo}}</td>
+      <td>{{$user->rol->rol}}</td>
       <td></td>
     </tr>
+@endforeach
     
   </tbody>
 </table>
