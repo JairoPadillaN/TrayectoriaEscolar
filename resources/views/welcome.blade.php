@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Entrevista Inicial - UTVT</title>
-        <link rel="icon" href="{{ asset('assets/img/cuervo_logo.png') }}">
+        <link rel="icon" src="{{asset('assets/img/cuervo_logo.png')}}">
         <!-- Fonts -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -26,7 +26,7 @@
         <div>
             <!-- Image and text -->
             <nav class="navbar navbar-dark bg-dark" style="padding: 1ch">
-                <a class="navbar-brand" href="https://utvt.edomex.gob.mx">
+                <a class="navbar-brand" href="https://utvt.edomex.gob.mx" target="_blank">
                 <img src="{{asset('assets/img/cuervo_logo.png')}}" width="35" height="35" class="d-inline-block align-top" alt="">
                 Universidad Tecnológica del Valle de Toluca
                 </a>
