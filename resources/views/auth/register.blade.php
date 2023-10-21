@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('assets/css/LoginPage.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
     <script src="https://kit.fontawesome.com/6832f025eb.js" crossorigin="anonymous"></script>
 
 </head>
@@ -39,7 +39,7 @@
 
           @error('email')
               <span class="invalid-feedback" role="alert">
-                <script>alert('YA existe una cuenta con este correo')</script>
+                <script>alert('Ya existe una cuenta con este correo / El registro debe de ser con tu cuenta institucional')</script>
               </span>
           @enderror
 

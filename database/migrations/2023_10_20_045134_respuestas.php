@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sedes',function (Blueprint $table) {
+        Schema::create('respuestas',function(Blueprint $table){
             $table->id('id');
-            $table->string('NombreSede');
-            $table->string('Direccion');
-            $table->binary('FotoSede')->nullable();
+            $table->foreignId('pregunta_id');
+            $table->string('respuesta',255);
+            $table->foreignId('user_id');
             $table->timestamps();
+
+            $table->foreign('pregunta_id')->references('id')->on('preguntas');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sedes');
+        Schema::dropIfExists('respuestas');
     }
 };

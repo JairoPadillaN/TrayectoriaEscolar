@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{
+{ 
     /**
      * Run the migrations.
      */
@@ -13,12 +13,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->integer('matricula')->nullable();
             $table->string('name');
+            $table->string('apPaterno',255)->nullable();
+            $table->string('apMaterno',255)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('activo')->default(true);
+            $table->foreignId('rol_id')->default(3);
             $table->timestamps();
+
+            $table->foreign('rol_id')->references('id')->on('roles');
         });
     }
 

@@ -12,18 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('usuarios_extends', function (Blueprint $table){
-            $table->id('idUserExt');
-            $table->integer('matricula');
-            $table->string('nombre',255);
-            $table->string('apPaterno',255);
-            $table->string('apMaterno',255);
-            $table->string('sexo');
+            $table->id('id');
+            $table->foreignId('user_id');
+            $table->foreignId('sede_id');
+            $table->foreignId('rol_id');
+            $table->foreignId('carrera_id');
+            $table->foreignId('sexo_id');
+            $table->foreignId('genero_id');
             $table->binary('fotoPerfil')->nullable();
             $table->timestamps();
-            $table->foreignId('user_id');
-            $table->foreignId('sedeId');
-            $table->foreignId('idRol');
-            $table->foreignId('idCarrera');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('sede_id')->references('id')->on('sedes');
+            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->foreign('carrera_id')->references('id')->on('carreras');
+            $table->foreign('sexo_id')->references('id')->on('sexo');
+            $table->foreign('genero_id')->references('id')->on('genero');
+
         });
     }
 

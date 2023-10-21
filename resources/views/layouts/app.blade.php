@@ -7,75 +7,91 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ asset('assets/img/cuervo_logo.png') }}">
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/navbar.css')}}">
+
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+   {{--  @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+
+    
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    {{-- Navbar nuevo --}}
+    <nav>
+        <div class="wrapper">
+          <div class="logo">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{asset('assets/img/UTVT_logo.png')}}" height="30">                    
+            </a>
+          </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            {{--Links de Autenticación--}}
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Acceder</a>
+                    </li>
+                @endif
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                    </li>
+                @endif
+            @else
+                <li>
+                <a href="#" class="desktop-item">{{ Auth::user()->name }}</a>
+                <input type="checkbox" id="showMega">
+                <label for="showMega" class="mobile-item">Menu</label>
+                <div class="mega-box">
+                    <div class="content">
+                    <div class="row">
+                        <img src="{{asset('assets/img/cuervo_logo.png')}}">
+                    </div>
+                    <div class="row">
+                        <header>Herramientas</header>
+                        <ul class="mega-links">
+                        <li><a href="#">Administrar Sedes</a></li>
+                        <li><a href="#">Administrar Carreras</a></li>
+                        <li><a href="#">Administrar Usuarios</a></li>
+                        <li><a href="#">Administrar Roles</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <header>Encuesta</header>
+                        <ul class="mega-links">
+                        <li><a href="#">Administrar Encuesta</a></li>
+                        <li><a href="#">Ver resultados</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <header>Cuenta</header>
+                        <ul class="mega-links">
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
+                </li>
+            @endguest 
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
 
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
 </body>
 </html>
