@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sedes',function (Blueprint $table) {
+        Schema::create('preguntas',function(Blueprint $table){
             $table->id('id');
-            $table->string('NombreSede');
-            $table->string('Direccion');
-            $table->binary('FotoSede')->nullable();
+            $table->string('pregunta',255);
+            $table->string('descripcion',255);
+            $table->boolean('activo')->default(true);
+            $table->foreignId('categoria_id');
             $table->timestamps();
+
+            $table->foreign('categoria_id')->references('id')->on('categoria_encuesta');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sedes');
+        Schema::dropIfExists('preguntas');
     }
 };
