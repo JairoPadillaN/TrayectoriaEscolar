@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SedesController;
+use App\Http\Controllers\GenerosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* Rutas para el modulo de Sedes */
 Route::get('/sedes', [App\Http\Controllers\SedesController::class, 'index'])->name('sedes');
 Route::resource('sedes', SedesController::class);
+/* Rutas para el modulo de Géneros */
+Route::get('/generos',[App\Http\Controllers\GenerosController::class, 'index'])->name('generos');
+Route::resource('generos', GenerosController::class);
