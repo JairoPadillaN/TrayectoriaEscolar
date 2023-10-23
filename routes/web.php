@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SedesController;
 use App\Http\Controllers\GenerosController;
+use App\Http\Controllers\CategoriasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,7 @@ Route::resource('sedes', SedesController::class);
 /* Rutas para el modulo de Géneros */
 Route::get('/generos',[App\Http\Controllers\GenerosController::class, 'index'])->name('generos');
 Route::resource('generos', GenerosController::class);
+/* Rutas para el modulo de Categorias */
+Route::get('/categorias',[App\Http\Controllers\CategoriasController::class, 'index'])->name('categorias');
+Route::resource('categorias', CategoriasController::class);
+
