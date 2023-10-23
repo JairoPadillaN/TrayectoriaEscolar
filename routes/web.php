@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SedesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/* Rutas para el modulo de Sedes */
+Route::get('/sedes', [App\Http\Controllers\SedesController::class, 'index'])->name('sedes');
+Route::resource('sedes', SedesController::class);
