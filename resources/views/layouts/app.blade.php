@@ -19,6 +19,7 @@
     
 </head>
 <body>
+
     {{-- Navbar nuevo --}}
     <nav>
         <div class="wrapper">
@@ -47,7 +48,7 @@
                 <li>
                 <a href="#" class="desktop-item">{{ Auth::user()->name }}</a>
                 <input type="checkbox" id="showMega">
-                <label for="showMega" class="mobile-item">Menu</label>
+                <label for="showMega" class="mobile-item">{{ Auth::user()->name }}</label>
                 <div class="mega-box">
                     <div class="content">
                     <div class="row">
