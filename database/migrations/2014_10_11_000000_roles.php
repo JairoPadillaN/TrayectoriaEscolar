@@ -16,6 +16,24 @@ return new class extends Migration
             $table->string('Rol');
             $table->timestamps();
         });
+
+        DB::table('roles')->insert([
+            [
+                'Rol' => 'Administrador', 
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'Rol' => 'Docente', 
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'Rol' => 'Estudiante', 
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+        ]);
     }
 
     /**

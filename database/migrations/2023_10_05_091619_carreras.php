@@ -14,12 +14,21 @@ return new class extends Migration
         Schema::create('carreras', function (Blueprint $table){
             $table->id('id');
             $table->string('carrera');
-            $table->string('descripcion', 255)->nullable();
-            $table->foreignId('sede_id');
+            $table->text('descripcion', 255)->nullable();
+            $table->foreignId('sede_id')->default(1);
             $table->timestamps();
 
             $table->foreign('sede_id')->references('id')->on('sedes');
         });
+
+        DB::table('carreras')->insert([
+            [
+                'carrera' => 'Sin Especificar', 
+                'descripcion' => null,
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+        ]);
     }
 
     /**

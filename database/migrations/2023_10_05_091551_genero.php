@@ -17,6 +17,14 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
+
+        DB::table('genero')->insert([
+            [
+                'genero' => 'Sin especificar', 
+                'created_at' => date('Y-m-d H:i:s'), 
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+        ]);
     }
 
     /**
