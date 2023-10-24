@@ -58,7 +58,7 @@
                         <header>Herramientas</header>
                         <ul class="mega-links">
                         <li><a href="{{url('sedes')}}">Administrar Sedes</a></li>
-                        <li><a href="#">Administrar Carreras</a></li>
+                        <li><a href="{{url('carreras')}}">Administrar Carreras</a></li>
                         <li><a href="#">Administrar Usuarios</a></li>
                         <li><a href="#">Administrar Roles</a></li>
                         </ul>
