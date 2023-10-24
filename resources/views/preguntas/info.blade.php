@@ -13,11 +13,11 @@
             
             <div class="mb-3">
               <label for="" class="form-label">Pregunta</label> 
-              <input type="text" class="form-control" name="pregunta" id="" aria-describedby="helpId" value="{{$pregunta->pregunta}}">
+              <input type="text" class="form-control" name="pregunta" id="" aria-describedby="helpId" value="{{$pregunta->pregunta}}" required>
             </div>
             <div class="mb-3">
               <label for="" class="form-label">Descripción </label> 
-              <input type="text" class="form-control" name="descripcion" id="" aria-describedby="helpId" value="{{$pregunta->descripcion}}">
+              <input type="text" class="form-control" name="descripcion" id="" aria-describedby="helpId" value="{{$pregunta->descripcion}}" required>
             </div>
   
             <select class="form-select" aria-label="Default select example" name="categoria" id="categoria">
