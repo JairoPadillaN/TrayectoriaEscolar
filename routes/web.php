@@ -4,6 +4,7 @@ use App\Http\Controllers\SedesController;
 use App\Http\Controllers\GenerosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PreguntasController;
+use App\Http\Controllers\CarrerasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,6 @@ Route::resource('categorias', CategoriasController::class);
 /* Rutas para el modulo de Preguntas */
 Route::get('/preguntas',[App\Http\Controllers\PreguntasController::class, 'index'])->name('preguntas');
 Route::resource('preguntas', PreguntasController::class);
+/* Rutas para el modulo de Carreras */
+Route::get('/carreras',[App\Http\Controllers\CarrerasController::class, 'index'])->name('carreras');
+Route::resource('carreras', CarrerasController::class);
