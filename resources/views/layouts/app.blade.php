@@ -60,7 +60,7 @@
                         <li><a href="{{url('sedes')}}">Administrar Sedes</a></li>
                         <li><a href="{{url('carreras')}}">Administrar Carreras</a></li>
                         <li><a href="#">Administrar Usuarios</a></li>
-                        <li><a href="#">Administrar Roles</a></li>
+                        <li><a href="{{url('roles')}}">Administrar Roles</a></li>
                         </ul>
                     </div>
                     <div class="row">
