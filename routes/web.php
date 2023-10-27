@@ -5,9 +5,13 @@ use App\Http\Controllers\GenerosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PreguntasController;
 use App\Http\Controllers\CarrerasController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SexosController;
+=======
+use App\Http\Controllers\EncuestaController;
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +48,7 @@ Route::resource('preguntas', PreguntasController::class);
 /* Rutas para el modulo de Carreras */
 Route::get('/carreras',[App\Http\Controllers\CarrerasController::class, 'index'])->name('carreras');
 Route::resource('carreras', CarrerasController::class);
+<<<<<<< Updated upstream
 /* Rutas para el modulo Lista de Usuarios */
 Route::get('/usuarios',[App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
 Route::resource('usuarios', UsuariosController::class);
@@ -53,3 +58,8 @@ Route::resource('roles', RolesController::class);
 /* Rutas para el modulo Lista de Sexos */
 Route::get('/sexos',[App\Http\Controllers\SexosController::class, 'index'])->name('sexos');
 Route::resource('sexos', SexosController::class);
+=======
+/* Rutas para el modulo de Encuesta Inicial */
+Route::get('/encuesta',[App\Http\Controllers\EncuestaController::class, 'index'])->name('encuesta');
+Route::resource('encuesta', EncuestaController::class);
+>>>>>>> Stashed changes
