@@ -25,16 +25,11 @@ return new class extends Migration
             $table->foreignId('sede_id')->default(1);
             $table->foreignId('rol_id')->default(3);
             $table->foreignId('carrera_id')->default(1);
-            $table->foreignId('sexo_id')->default(1);
-            $table->foreignId('genero_id')->default(1);
-            $table->binary('fotoPerfil')->nullable();
             $table->timestamps();
 
             $table->foreign('sede_id')->references('id')->on('sedes');
-            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->foreign('rol_id')->references('id')->on('rolesuser');
             $table->foreign('carrera_id')->references('id')->on('carreras');
-            $table->foreign('sexo_id')->references('id')->on('sexo');
-            $table->foreign('genero_id')->references('id')->on('genero');
 
         });
     }

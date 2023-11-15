@@ -15,6 +15,10 @@
               <input type="text" class="form-control" name="nombre" id="" aria-describedby="helpId" placeholder="Plan educativo nuevo" required>
             </div>
             <div class="mb-3">
+              <label for="" class="form-label">Acronimo de la carrera</label> 
+              <input type="text" class="form-control" name="acronimo" id="" aria-describedby="helpId" placeholder="Acronimo" required>
+            </div>
+            <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Descripción </label> 
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="descripcion" aria-describedby="helpId" placeholder="Perfil profesional" required></textarea>
             </div>
@@ -28,8 +32,8 @@
           </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-outline-success">Guardar</button>
         </div>
       </form>
       </div>

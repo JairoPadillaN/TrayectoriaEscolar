@@ -20,9 +20,6 @@ class Usuarios extends Model
         'sede_id',
         'rol_id',
         'carrera_id',
-        'sexo_id',
-        'genero_id',
-        'fotoPerfil',
     ];
     protected $guarded=[];
 
@@ -33,22 +30,12 @@ class Usuarios extends Model
 
     public function rol()
     {
-        return $this->belongsTo(Roles::class,'id');
+        return $this->belongsTo(RolesUser::class,'id');
     }
 
     public function carrera()
     {
         return $this->belongsTo(Carreras::class,'id');
-    }
-
-    public function sexo()
-    {
-        return $this->belongsTo(Sexos::class,'id');
-    }
-
-    public function genero()
-    {
-        return $this->belongsTo(Generos::class,'id');
     }
 
 }

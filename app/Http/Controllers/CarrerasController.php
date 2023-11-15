@@ -20,9 +20,9 @@ class CarrerasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $carreras = Carreras::with('sede')->get();
+        $carreras = Carreras::with('sede')->paginate(5, ['*'], 'page', $request->input('page', 1));
         $sedes = Sedes::all();
         return view('carreras.index',compact('carreras','sedes'));
     }
@@ -42,6 +42,7 @@ class CarrerasController extends Controller
     {
         $carreras = new Carreras();
         $carreras->carrera = $request->input('nombre');
+        $carreras->acronimo = $request->input('acronimo');
         $carreras->descripcion = $request->input('descripcion');
         $carreras->sede_id =  $request->input('sede');
         $carreras->save();
@@ -71,6 +72,7 @@ class CarrerasController extends Controller
     {
         $carreras = Carreras::find($id);
         $carreras->carrera = $request->input('nombre');
+        $carreras->acronimo = $request->input('acronimo');
         $carreras->descripcion = $request->input('descripcion');
         $carreras->sede_id =  $request->input('sede');
         $carreras->update();

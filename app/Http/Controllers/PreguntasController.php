@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categorias;
 use App\Models\Preguntas;
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
 class PreguntasController extends Controller
@@ -22,9 +22,10 @@ class PreguntasController extends Controller
      */
     public function index()
     {
-        $preguntas = Preguntas::with('categoria')->get();
+        $preguntas = Preguntas::with('categoria')->paginate(10);
         $categorias = Categorias::all();
-        return view('preguntas.index', compact('preguntas','categorias'));
+       // $tipoInput = tipoInput::all();
+    return view('preguntas.index', compact('preguntas','categorias',/*'tipoInput'*/));
     }
 
     /**
@@ -42,7 +43,7 @@ class PreguntasController extends Controller
     {
         $preguntas = new Preguntas();
         $preguntas->pregunta = $request->input('pregunta');
-        $preguntas->descripcion = $request->input('descripcion');
+       //$preguntas->tipoInput_id = $request->input('input');
         $preguntas->categoria_id = $request->input('categoria');
         $preguntas->save();
         return redirect()->back();
@@ -71,7 +72,7 @@ class PreguntasController extends Controller
     {
         $preguntas = Preguntas::find($id);
         $preguntas->pregunta = $request->input('pregunta');
-        $preguntas->descripcion = $request->input('descripcion');
+       // $preguntas->tipoInput_id = $request->input('input');
         $preguntas->categoria_id = $request->input('categoria');
         $preguntas->update();
         return redirect()->back();
@@ -86,5 +87,4 @@ class PreguntasController extends Controller
         $preguntas->delete();
         return redirect()->back();
     }
-
 }

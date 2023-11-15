@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carreras;
-use App\Models\Generos;
-use App\Models\Roles;
+use App\Models\RolesUser;
 use App\Models\Sedes;
-use App\Models\Sexos;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
 
@@ -24,15 +22,27 @@ class UsuariosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+/*     public function index(Request $request)
     {
-        $usuarios = Usuarios::with('sede','rol','carrera','sexo','genero')->get();
+        $usuarios = Usuarios::with('sede','rol','carrera')->paginate(5, ['*'], 'page', $request->input('page', 1));
         $sedes = Sedes::all();
-        $roles = Roles::all();
-        $carreras = Carreras::all();
-        $sexos = Sexos::all();
-        $generos = Generos::all();      
-        return view('usuarios.index',compact(['usuarios','sedes','roles','carreras','sexos','generos']));
+        $roles = RolesUser::all();
+        $carreras = Carreras::all();     
+        return view('usuarios.index',compact(['usuarios','sedes','roles','carreras']));
+    } */
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $usuarios = Usuarios::with('sede','rol','carrera')
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('matricula', 'like', '%' . $search . '%');
+            })
+            ->paginate(15, ['*'], 'page', $request->input('page', 1));
+        $sedes = Sedes::all();
+        $roles = RolesUser::all();
+        $carreras = Carreras::all();     
+        return view('usuarios.index',compact(['usuarios','sedes','roles','carreras']));
     }
 
 
@@ -58,8 +68,6 @@ class UsuariosController extends Controller
         $usuarios->sede_id = $request->input('sede');
         $usuarios->rol_id = $request->input('rol');
         $usuarios->carrera_id = $request->input('carrera');
-        $usuarios->sexo_id = $request->input('sexo');
-        $usuarios->genero_id = $request->input('genero');
         $usuarios->save();
         return redirect()->back();
     }
@@ -95,10 +103,9 @@ class UsuariosController extends Controller
         $usuarios->apMaterno = $request->input('apMat');
         $usuarios->sede_id = $request->input('sede');
         $usuarios->carrera_id = $request->input('carrera');
-        $usuarios->sexo_id = $request->input('sexo');
-        $usuarios->genero_id = $request->input('genero');
+
         $usuarios->update();
-        return view('usuarios.PerfilUsuario',compact(['usuarios','sedes','roles','carreras','sexos','generos']));
+        return view('usuarios.PerfilUsuario',compact(['usuarios','sedes','roles','carreras']));
     }
 
     /**

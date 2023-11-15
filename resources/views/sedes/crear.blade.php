@@ -12,18 +12,18 @@
           
           <div class="mb-3">
             <label for="" class="form-label">Nombre</label> 
-            <input type="text" class="form-control" name="nombre" id="" aria-describedby="helpId" placeholder="">
+            <input type="text" class="form-control" name="nombre" id="" aria-describedby="helpId" placeholder="" required>
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Dirección </label> 
-            <input type="text" class="form-control" name="dirección" id="" aria-describedby="helpId" placeholder="">
+            <input type="text" class="form-control" name="dirección" id="" aria-describedby="helpId" placeholder="" required>
           </div>
 
         </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-outline-success">Guardar</button>
       </div>
     </form>
     </div>

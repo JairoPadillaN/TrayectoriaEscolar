@@ -27,15 +27,19 @@
             <!-- Image and text -->
             <nav class="navbar navbar-dark bg-dark" style="padding: 2ch">
                 <a class="navbar-brand" href="https://utvt.edomex.gob.mx" target="_blank" rel="noopener">
-                <img src="{{asset('assets/img/cuervo_logo.png')}}" width="35" height="35" class="d-inline-block align-top" alt="">
+                <img src="{{asset('assets/img/cuervo.png')}}" width="35" height="35" class="d-inline-block align-top" alt="">
                 Universidad Tecnológica del Valle de Toluca
                 </a>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{url('/home')}}">Inicio</a>
+                        <a href="{{url('/dashboard')}}" class="btn btn-outline-success my-2 my-sm-0">Inicio</a>
                     @else
                         <a href="{{route('login')}}" class="btn btn-outline-success my-2 my-sm-0">
                             <i class="fa-solid fa-arrow-right-to-bracket fa-fade"></i> Iniciar Sesión</a>
+                        @if(Route::has('register'))
+                        <a href="{{route('register')}}" class="btn btn-outline-success my-2 my-sm-0">
+                            <i class="fa-solid fa-user-plus fa-beat-fade"></i> Registrarse</a>
+                        @endif
                     @endauth
                 @endif
             </nav>

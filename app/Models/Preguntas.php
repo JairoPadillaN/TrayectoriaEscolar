@@ -10,8 +10,14 @@ class Preguntas extends Model
     use HasFactory;
     protected $table = 'preguntas';
     protected $primarykey = 'id';
-    protected $fillable = ['pregunta','descripcion','activo','categoria_id'];
+    protected $fillable = ['pregunta','activo','tipoInput_id','categoria_id'];
     protected $guarded=[];
+
+
+    public function tipoInput()
+    {
+        return $this->belongsTo(tipoInput::class,'id');
+    }
 
     public function categoria()
     {

@@ -1,102 +1,47 @@
-<!doctype html>
-<html lang="en">
+<x-guest-layout class="bg-img-log">
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-<head>
-  <title>Iniciar Sesión - UTVT</title>
-  <link rel="icon" href="{{ asset('assets/img/cuervo_logo.png') }}">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('assets/css/LoginPage.css')}}">
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <script src="https://kit.fontawesome.com/6832f025eb.js" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-
-  <div class="bg-img">
-    <div class="content">
-      <img src="{{asset('assets/img/cuervo_logo.png')}}">
-      <header>Universidad Tecnológica del Valle de Toluca</header>
-      <p>Ingresa tus credenciales para iniciar sesión</p>
-
-      <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="field space form">
-          <span><i class="fa-regular fa-user fa-fade"></i></span>
-          <input id="email" type="email" class="form @error('email') is-invalid @enderror" name="email" value="{{old('email')}}" placeholder="example@utvtol.edu.mx" required autocomplete="email" autofocus>
 
-          @error('email')
-              <span class="invalid-feedback" role="alert">
-                <script>alert('Las Credenciales son erronéas o no existen')</script>
-              </span>
-          @enderror
-
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Correo Institucional')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="example@utvtol.edu.mx"/>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="field space form">
-          <span><i class="fa-regular fa-envelope fa-fade"></i></span>
-          <input id="password" type="password" class="password @error('password') is-invalid @enderror" name="password" placeholder="Contraseña" required autocomplete="current-password">
-          <span class="show"><i class="fa-regular fa-eye"></i></span>
-          
-          @error('password')
-          <span class="invalid-feedback" role="alert">
-            <script>alert('Las Credenciales son erronéas o no existen')</script>
-          </span>
-        @enderror
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Contraseña')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="rPass">
-          @if (Route::has('password.request'))
-          <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
-          @endif
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Recuerdame') }}</span>
+            </label>
         </div>
 
-        <div class="space">
-          <button class="btn btn-outline-success btn-block" type="submit"><i class="fa-solid fa-arrow-right-to-bracket fa-fade"></i> Iniciar Sesión </button>
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                    {{ __('¿Olvidate tu contraseña?') }}
+                </a>
+            @endif
+
+            <x-primary-button class="ml-3">
+                {{ __('Iniciar Sesón') }}
+            </x-primary-button>
         </div>
-
-        <div class="signup">¿Aún no tienes Cuenta?
-          <a href="{{route('register')}}">Crear Cuenta</a>
-        </div>
-
-      </form>
-    </div>
-  </div>
-
-  <!-- Script mostrar contraseña -->
-<script>
-  const pass_field = document.querySelector('.password');
-  const show_btn = document.querySelector('.show');
-  show_btn.addEventListener('click',function(){
-    if(pass_field.type === "password"){
-      pass_field.type = "text";
-      show_btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
-    } else{
-      pass_field.type = "password";
-      show_btn.innerHTML = '<i class="fa-regular fa-eye"></i>';
-    }
-  });
-</script>
-    
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-
-<script src="sweetalert2.all.min.js"></script>
-
-</body>
-
-</html>
+    </form>
+</x-guest-layout>

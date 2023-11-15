@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sedes;
 use Illuminate\Http\Request;
- 
+use App\Models\Sedes;
+
 class SedesController extends Controller
 {
-    /**
+     /**
      * Create a new controller instance.
      *
      * @return void

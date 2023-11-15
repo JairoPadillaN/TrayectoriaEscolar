@@ -51,8 +51,23 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            /*Regla personalizada para el dominio @utvtol.edu.mx */
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users',
+                function ($attribute, $value, $fail) {
+                    $allowedDomains = ['utvtol.edu.mx'];
+                    $domain = explode('@', $value)[1];
+                    if (!in_array($domain, $allowedDomains)) {
+                        $fail("El dominio del correo electrónico no está permitido.");
+                    }
+                },
+            ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            
         ]);
     }
 

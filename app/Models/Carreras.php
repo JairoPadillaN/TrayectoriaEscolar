@@ -10,7 +10,7 @@ class Carreras extends Model
     use HasFactory;
     protected $table = 'carreras';
     protected $primarykey = 'id';
-    protected $fillable = ['carrera','descripcion','sede_id'];
+    protected $fillable = ['carrera','acronimo','descripcion','sede_id'];
     protected $guarded=[];
 
     public function sede()
